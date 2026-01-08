@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Alperen Aydın - Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00d9ff",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2023",
+                        "surface-dark": "#162a2e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f2023; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #20454b; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00d9ff; 
+        }
+
+        .selection\:bg-primary\/30::selection {
+            background-color: rgba(0, 217, 255, 0.3);
+        }
+
+        .selection\:text-primary::selection {
+            color: #00d9ff;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen relative selection:bg-primary/30 selection:text-primary">
+    <!-- Sticky Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 h-[70px] w-full border-b border-white/5 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md transition-all duration-300">
+        <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-6 lg:px-10">
+            <!-- Logo Area -->
+            <a class="group flex items-center gap-2 outline-none" href="#home">
+                <div class="relative flex size-10 items-center justify-center rounded-lg bg-surface-dark/50 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-primary/10 group-hover:ring-primary/50">
+                    <!-- Tech-inspired decorative corners -->
+                    <div class="absolute -left-0.5 -top-0.5 size-2 border-l border-t border-primary/0 transition-colors group-hover:border-primary"></div>
+                    <div class="absolute -right-0.5 -bottom-0.5 size-2 border-r border-b border-primary/0 transition-colors group-hover:border-primary"></div>
+                    <span class="font-bold tracking-tighter text-white group-hover:text-primary">AA</span>
+                </div>
+            </a>
+            <!-- Desktop Menu -->
+            <div class="hidden items-center gap-1 md:flex">
+                <ul class="flex items-center gap-1">
+                    <li>
+                        <a class="nav-link relative flex items-center rounded-lg px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-white/5" href="#home" data-section="home">
+                            Home
+                            <!-- Active indicator dot -->
+                            <span class="nav-indicator absolute bottom-1.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link group relative flex items-center rounded-lg px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#experience" data-section="experience">
+                            Experience
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link group relative flex items-center rounded-lg px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#apps" data-section="apps">
+                            Apps
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link group relative flex items-center rounded-lg px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#education" data-section="education">
+                            Education
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link group relative flex items-center rounded-lg px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#technologies" data-section="technologies">
+                            Technologies
+                        </a>
+                    </li>
+                </ul>
+                <!-- Divider -->
+                <div class="mx-2 h-6 w-px bg-gray-200 dark:bg-white/10"></div>
+                <!-- CTA / Contact -->
+                <a class="group ml-2 flex items-center gap-2 rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-background-dark transition-all hover:bg-primary/90 hover:shadow-[0_0_15px_rgba(0,217,255,0.4)] active:scale-95" href="#contact">
+                    <span>Contact</span>
+                    <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </a>
+            </div>
+            <!-- Mobile Menu Toggle (Visible on smaller screens) -->
+            <button id="mobile-menu-btn" class="flex size-10 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 md:hidden">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-0 flex flex-col items-center pt-[70px]">
+        <!-- Hero Section -->
+        <section class="relative flex h-[80vh] w-full flex-col items-center justify-center overflow-hidden px-6 text-center" id="home">
+            <!-- Background gradient/pattern -->
+            <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a383f] via-background-dark to-background-dark"></div>
+            <div class="absolute inset-0 -z-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+            
+            <!-- Hero Content -->
+            <div class="relative z-10 flex max-w-3xl flex-col items-center gap-6">
+                <!-- Profile Image -->
+                <div class="relative group mb-4">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative aspect-square w-48 h-48 sm:w-52 sm:h-52 rounded-full border-4 border-[#232946] overflow-hidden bg-surface-dark shadow-2xl">
+                        <img alt="Professional headshot of Alperen Aydın" class="w-full h-full object-cover" src="photos/foto.jpg"/>
+                    </div>
+                </div>
+                <div class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+                    </span>
+                    Available for hire
+                </div>
+                <h1 class="bg-gradient-to-br from-white via-white to-gray-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-7xl">
+                    Building the future<br/>one line at a time.
+                </h1>
+                <p class="max-w-2xl text-lg text-gray-400">
+                    I'm Alperen, a software engineer specializing in building exceptional digital experiences. Currently, I'm focused on creating accessible, human-centered products.
+                </p>
+                <div class="mt-4 flex gap-4">
+                    <a href="#experience" class="rounded-lg bg-white/5 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/10 transition hover:bg-white/10">
+                        View Experience
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-4 sm:px-10 py-16" id="experience">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="flex flex-col items-center justify-center mb-24">
+                    <h1 class="text-4xl md:text-5xl font-bold text-center text-white mb-6">
+                        Professional Experience
+                    </h1>
+                    <div class="w-[60px] h-[4px] bg-primary rounded-full shadow-[0_0_10px_rgba(0,217,255,0.5)]"></div>
+                </div>
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-primary/20 rounded-full">
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary via-primary/50 to-transparent opacity-30"></div>
+                    </div>
+                    
+                    <!-- Experience Entry 1: Integration Engineer @ Ericsson -->
+                    <div class="relative flex justify-center items-center w-full mb-20 group">
+                        <div class="w-1/2 pr-12 flex justify-end">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-green-500 hover:shadow-[0_8px_30px_rgba(34,197,94,0.15)] transition-shadow duration-300">
+                                <div class="absolute top-1/2 -right-12 w-12 h-[2px] bg-green-500/50 hidden md:block"></div>
+                                <div class="flex items-start gap-4 mb-6">
+                                    <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
+                                        <span class="material-symbols-outlined text-white text-3xl">business</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">Integration Engineer</h3>
+                                        <p class="text-lg font-medium text-green-400 mt-1">Ericsson</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-4 mb-6 text-sm text-gray-300 font-medium uppercase tracking-wider">
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+                                        <span>Sep 2024 - Dec 2025</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+                                        <span>Ankara, TR</span>
+                                    </div>
+                                </div>
+                                <ul class="space-y-3 mb-6 list-none">
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Designed and developed Python-based automation solutions to support 2G Rehoming processes in live telecom networks.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Automated complex integration workflows, significantly reducing manual configuration effort during network migrations.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Integrated scripts with Ericsson Network Manager (ENM) to retrieve network data and execute rehoming operations programmatically.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Built tools that process structured inputs (such as CSV files) and generate validated configuration outputs for operational use.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Actively collaborated with network engineers to align automation solutions with real-world operational requirements.</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">Python</span>
+                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">Network Automation</span>
+                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">Telecom Integration</span>
+                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">ENM</span>
+                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">CSV Processing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                            <div class="relative flex h-[20px] w-[20px]">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-[20px] w-[20px] bg-green-500 border-4 border-[#1A1F36]"></span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 pl-12 hidden md:block"></div>
+                    </div>
+
+                    <!-- Experience Entry 2: Software Engineer Intern @ Arçelik -->
+                    <div class="relative flex justify-center items-center w-full mb-20 group">
+                        <div class="w-1/2 pr-12 hidden md:block"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                            <div class="h-[20px] w-[20px] rounded-full bg-primary border-4 border-[#1A1F36] shadow-sm z-10"></div>
+                        </div>
+                        <div class="w-1/2 pl-12 flex justify-start">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-shadow duration-300">
+                                <div class="absolute top-1/2 -left-12 w-12 h-[2px] bg-primary/30 hidden md:block"></div>
+                                <div class="flex items-start gap-4 mb-6">
+                                    <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
+                                        <span class="material-symbols-outlined text-white text-3xl">business</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">Software Engineer Intern</h3>
+                                        <p class="text-lg font-medium text-primary mt-1">Arçelik</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-4 mb-6 text-sm text-gray-300 font-medium uppercase tracking-wider">
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+                                        <span>JAN 2024 - JUN 2024</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+                                        <span>Ankara, TR</span>
+                                    </div>
+                                </div>
+                                <ul class="space-y-3 mb-6 list-none">
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Contributed to the development of internal enterprise applications using <strong class="text-white">C#</strong> and <strong class="text-white">.NET</strong>, focusing on maintainable and scalable architecture.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Collaborated with cross-functional teams to implement new features and fix production bugs.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Worked with SQL databases, writing optimized queries and assisting in data modeling tasks.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Gained hands-on experience with corporate software development workflows and version control best practices.</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">C#</span>
+                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">.NET</span>
+                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">SQL</span>
+                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Enterprise Applications</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Entry 3: Software Engineer Intern (Backend) @ Ericsson -->
+                    <div class="relative flex justify-center items-center w-full mb-20 group">
+                        <div class="w-1/2 pr-12 flex justify-end">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-purple-500 hover:shadow-[0_8px_30px_rgba(168,85,247,0.15)] transition-shadow duration-300">
+                                <div class="absolute top-1/2 -right-12 w-12 h-[2px] bg-purple-500/30 hidden md:block"></div>
+                                <div class="flex items-start gap-4 mb-6">
+                                    <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
+                                        <span class="material-symbols-outlined text-white text-3xl">business</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">Software Engineer Intern (Backend)</h3>
+                                        <p class="text-lg font-medium text-purple-400 mt-1">Ericsson</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-4 mb-6 text-sm text-gray-300 font-medium uppercase tracking-wider">
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+                                        <span>Aug 2023 - Nov 2023</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+                                        <span>Ankara, TR</span>
+                                    </div>
+                                </div>
+                                <ul class="space-y-3 mb-6 list-none">
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Worked as a backend-focused intern on the <strong class="text-white">KeyFlow</strong> project, contributing to business-critical backend services.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Developed and maintained backend components using <strong class="text-white">.NET</strong>, following clean code and layered architecture principles.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Strengthened database skills by working extensively with <strong class="text-white">SQL</strong> and gaining hands-on experience with NoSQL concepts and <strong class="text-white">PostgreSQL</strong>.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Collaborated closely with senior backend engineers to analyze requirements, implement features, and debug production issues.</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">.NET</span>
+                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">C#</span>
+                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">SQL</span>
+                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">PostgreSQL</span>
+                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">NoSQL</span>
+                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">Backend Development</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                            <div class="h-[20px] w-[20px] rounded-full bg-purple-500 border-4 border-[#1A1F36] shadow-sm z-10"></div>
+                        </div>
+                        <div class="w-1/2 pl-12 hidden md:block"></div>
+                    </div>
+
+                    <!-- Experience Entry 4: Software Engineer Intern @ PTT -->
+                    <div class="relative flex justify-center items-center w-full mb-20 group">
+                        <div class="w-1/2 pr-12 hidden md:block"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                            <div class="h-[20px] w-[20px] rounded-full bg-blue-500 border-4 border-[#1A1F36] shadow-sm z-10"></div>
+                        </div>
+                        <div class="w-1/2 pl-12 flex justify-start">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-blue-500/50 hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] transition-shadow duration-300">
+                                <div class="absolute top-1/2 -left-12 w-12 h-[2px] bg-blue-500/30 hidden md:block"></div>
+                                <div class="flex items-start gap-4 mb-6">
+                                    <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
+                                        <span class="material-symbols-outlined text-white text-3xl">business</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">Software Engineer Intern</h3>
+                                        <p class="text-lg font-medium text-blue-400 mt-1">PTT (Turkish Post)</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-4 mb-6 text-sm text-gray-300 font-medium uppercase tracking-wider">
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+                                        <span>AUG 2022 - SEP 2022</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+                                        <span>Ankara, TR</span>
+                                    </div>
+                                </div>
+                                <ul class="space-y-3 mb-6 list-none">
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Supported frontend development of internal web applications using <strong class="text-white">React</strong>, focusing on reusable components and clean UI structure.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Integrated <strong class="text-white">REST APIs</strong> and improved data flow between frontend and backend services.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Assisted in debugging and improving legacy codebases, enhancing overall application stability.</span>
+                                    </li>
+                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
+                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                        <span>Worked closely with senior developers to understand large-scale system architecture and development standards.</span>
+                                    </li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">React</span>
+                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">JavaScript</span>
+                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">REST APIs</span>
+                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">Frontend Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline End Point -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 bottom-0 flex items-center justify-center">
+                        <div class="h-3 w-3 rounded-full bg-gray-500"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apps Section -->
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-6 py-20" id="apps">
+            <div class="max-w-[1280px] mx-auto w-full">
+                <!-- Section Header -->
+                <div class="flex flex-col mb-12">
+                    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-4">
+                        Featured Mobile Applications
+                    </h2>
+                    <p class="text-slate-500 dark:text-[#8dc4ce] text-lg max-w-2xl">
+                        A selection of mobile experiences crafted with Swift, SwiftUI, and modern iOS frameworks.
+                    </p>
+                </div>
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1: Future Partner - AI Soulmate -->
+                    <div class="group relative flex flex-col bg-white dark:bg-[#173136] rounded-2xl p-6 shadow-sm border border-transparent hover:border-primary/50 hover:shadow-[0_0_20px_rgba(0,217,255,0.15)] hover:-translate-y-2 transition-all duration-300 ease-out h-full">
+                        <!-- Icon Area -->
+                        <div class="mb-6 flex-shrink-0">
+                            <div class="w-[120px] h-[120px] rounded-[24px] overflow-hidden shadow-inner bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white !text-[64px]">favorite</span>
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div class="flex flex-col flex-grow">
+                            <h3 class="text-slate-900 dark:text-white text-2xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors">
+                                Future Partner - AI Soulmate
+                            </h3>
+                            <p class="text-slate-600 dark:text-gray-300 text-base leading-relaxed mb-6 flex-grow">
+                                Ever wondered what your future partner might look like? Use AI to create realistic images of your potential future spouse based on photos and themed scenarios like beach, nature, wedding, and more.
+                            </p>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#20454b] text-slate-700 dark:text-primary text-xs font-semibold uppercase tracking-wide">
+                                    SwiftUI
+                                </span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#20454b] text-slate-700 dark:text-primary text-xs font-semibold uppercase tracking-wide">
+                                    AI/ML
+                                </span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#20454b] text-slate-700 dark:text-primary text-xs font-semibold uppercase tracking-wide">
+                                    iOS
+                                </span>
+                            </div>
+                            <!-- Action -->
+                            <div class="mt-auto pt-4 border-t border-slate-100 dark:border-[#20454b]">
+                                <a class="inline-flex items-center gap-2 text-slate-900 dark:text-white font-bold text-sm hover:text-primary dark:hover:text-primary transition-colors group/link" href="https://apps.apple.com/tr/app/future-partner-ai-soulmate/id6746290518?l=tr" target="_blank" rel="noopener noreferrer">
+                                    View on App Store
+                                    <span class="material-symbols-outlined !text-lg transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: AI Anime Maker - Animefy -->
+                    <div class="group relative flex flex-col bg-white dark:bg-[#173136] rounded-2xl p-6 shadow-sm border border-transparent hover:border-primary/50 hover:shadow-[0_0_20px_rgba(0,217,255,0.15)] hover:-translate-y-2 transition-all duration-300 ease-out h-full">
+                        <!-- Icon Area -->
+                        <div class="mb-6 flex-shrink-0">
+                            <div class="w-[120px] h-[120px] rounded-[24px] overflow-hidden shadow-inner bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white !text-[64px]">auto_awesome</span>
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div class="flex flex-col flex-grow">
+                            <h3 class="text-slate-900 dark:text-white text-2xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors">
+                                AI Anime Maker - Animefy
+                            </h3>
+                            <p class="text-slate-600 dark:text-gray-300 text-base leading-relaxed mb-6 flex-grow">
+                                Step into the world of anime with just one tap! Transform your everyday photos into stunning, high-quality anime-style portraits using cutting-edge artificial intelligence.
+                            </p>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#20454b] text-slate-700 dark:text-primary text-xs font-semibold uppercase tracking-wide">
+                                    SwiftUI
+                                </span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#20454b] text-slate-700 dark:text-primary text-xs font-semibold uppercase tracking-wide">
+                                    AI/ML
+                                </span>
+                                <span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#20454b] text-slate-700 dark:text-primary text-xs font-semibold uppercase tracking-wide">
+                                    Image Processing
+                                </span>
+                            </div>
+                            <!-- Action -->
+                            <div class="mt-auto pt-4 border-t border-slate-100 dark:border-[#20454b]">
+                                <a class="inline-flex items-center gap-2 text-slate-900 dark:text-white font-bold text-sm hover:text-primary dark:hover:text-primary transition-colors group/link" href="https://apps.apple.com/tr/app/ai-anime-maker-animefy/id6745416402?l=tr" target="_blank" rel="noopener noreferrer">
+                                    View on App Store
+                                    <span class="material-symbols-outlined !text-lg transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: More Coming Soon -->
+                    <div class="group relative flex flex-col bg-white dark:bg-[#173136] rounded-2xl p-6 shadow-sm border border-dashed border-slate-300 dark:border-slate-600 hover:border-primary/50 hover:shadow-[0_0_20px_rgba(0,217,255,0.15)] transition-all duration-300 ease-out h-full">
+                        <!-- Icon Area -->
+                        <div class="mb-6 flex-shrink-0">
+                            <div class="w-[120px] h-[120px] rounded-[24px] overflow-hidden shadow-inner bg-gradient-to-br from-slate-400 to-slate-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white !text-[64px]">hourglass_empty</span>
+                            </div>
+                        </div>
+                        <!-- Content -->
+                        <div class="flex flex-col flex-grow items-center justify-center text-center">
+                            <h3 class="text-slate-900 dark:text-white text-2xl font-bold mb-3 tracking-tight group-hover:text-primary transition-colors">
+                                More Coming Soon
+                            </h3>
+                            <p class="text-slate-600 dark:text-gray-300 text-base leading-relaxed mb-6 flex-grow">
+                                Exciting new mobile applications are currently in development. Stay tuned for innovative experiences crafted with cutting-edge technology and modern iOS frameworks.
+                            </p>
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-6 justify-center">
+                                <span class="inline-flex items-center px-3 py-1 rounded-lg bg-slate-100 dark:bg-[#20454b] text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wide">
+                                    In Development
+                                </span>
+                            </div>
+                            <!-- Action -->
+                            <div class="mt-auto pt-4 border-t border-slate-100 dark:border-[#20454b] w-full">
+                                <div class="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 font-medium text-sm">
+                                    Coming Soon
+                                    <span class="material-symbols-outlined !text-lg">schedule</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-background-dark px-6 py-20" id="education">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2 class="text-4xl font-bold text-center mb-12 text-white">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Education</span>
+                </h2>
+                
+                <!-- Education Card -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="group relative bg-[#1A1F36] rounded-2xl p-8 md:p-10 shadow-lg border-2 border-primary/30 hover:border-primary/60 hover:shadow-[0_8px_30px_rgba(0,217,255,0.2)] transition-all duration-300">
+                        <!-- Header -->
+                        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+                            <div class="flex items-start gap-6">
+                                <!-- University Icon -->
+                                <div class="size-20 shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-blue-600/20 border-2 border-primary/30 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-primary text-4xl">school</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                                        Bachelor of Computer Engineering
+                                    </h3>
+                                    <p class="text-xl font-semibold text-primary mb-3">
+                                        Abant İzzet Baysal University
+                                    </p>
+                                    <div class="flex flex-wrap items-center gap-4 text-sm text-gray-300">
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-primary text-lg">calendar_month</span>
+                                            <span class="font-medium uppercase tracking-wide">Aug 2020 – Jun 2024</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-primary text-lg">star</span>
+                                            <span class="font-medium">GPA: <strong class="text-white">3.34 / 4.00</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Relevant Coursework -->
+                        <div class="pt-6 border-t border-white/10">
+                            <h4 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-xl">menu_book</span>
+                                Relevant Coursework
+                            </h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20 hover:bg-primary/20 transition-colors">
+                                    Data Structures & Algorithms
+                                </span>
+                                <span class="px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20 hover:bg-primary/20 transition-colors">
+                                    Object-Oriented Programming
+                                </span>
+                                <span class="px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20 hover:bg-primary/20 transition-colors">
+                                    Database Systems
+                                </span>
+                                <span class="px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20 hover:bg-primary/20 transition-colors">
+                                    Computer Networks
+                                </span>
+                                <span class="px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20 hover:bg-primary/20 transition-colors">
+                                    Software Engineering
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-6 py-20" id="technologies">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2 class="text-4xl font-bold text-center mb-16 text-white">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Technologies</span>
+                </h2>
+                
+                <!-- Technologies Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Languages -->
+                    <div class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-2xl">code</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Languages</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">C#</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Python</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">JavaScript</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Swift</span>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Development -->
+                    <div class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-2xl">phone_iphone</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Mobile Development</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Swift</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">SwiftUI</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">iOS App Architecture</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">App Store Deployment</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend & Automation -->
+                    <div class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-2xl">settings</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Backend & Automation</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">.NET</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Node.js</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <!-- Databases -->
+                    <div class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-2xl">storage</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Databases</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">PostgreSQL</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">MS SQL</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">MySQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Frontend -->
+                    <div class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-2xl">web</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Frontend</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">React</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Tailwind CSS</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">HTML</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">CSS</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Platforms -->
+                    <div class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-2xl">build</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Tools & Platforms</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Git</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Linux</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Docker</span>
+                        </div>
+                    </div>
+
+                    <!-- Telecom & Integration -->
+                    <div class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300 md:col-span-2 lg:col-span-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary text-2xl">router</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Telecom & Integration</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Ericsson Network Manager (ENM)</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-semibold border border-primary/20">Telecom Systems Integration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="flex min-h-[50vh] w-full items-center justify-center border-t border-white/5 bg-background-dark px-6 pb-20" id="contact">
+            <div class="max-w-4xl mx-auto w-full py-20">
+                <h2 class="text-4xl font-bold mb-12 text-white text-center">
+                    Get In <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Touch</span>
+                </h2>
+                
+                <!-- Contact Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/alperen-aydin0/" target="_blank" rel="noopener noreferrer" class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="size-14 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                                <span class="material-symbols-outlined text-primary text-3xl">hub</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-white mb-1 group-hover:text-primary transition-colors">LinkedIn</h3>
+                                <p class="text-sm text-gray-400">Connect with me</p>
+                            </div>
+                            <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">arrow_forward</span>
+                        </div>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/alperenaydinn" target="_blank" rel="noopener noreferrer" class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="size-14 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                                <span class="material-symbols-outlined text-primary text-3xl">code</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-white mb-1 group-hover:text-primary transition-colors">GitHub</h3>
+                                <p class="text-sm text-gray-400">View my projects</p>
+                            </div>
+                            <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">arrow_forward</span>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:alperen.aydn16@hotmail.com" class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="size-14 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                                <span class="material-symbols-outlined text-primary text-3xl">mail</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-white mb-1 group-hover:text-primary transition-colors">Email</h3>
+                                <p class="text-sm text-gray-400 break-all">alperen.aydn16@hotmail.com</p>
+                            </div>
+                            <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">arrow_forward</span>
+                        </div>
+                    </a>
+
+                    <!-- Phone -->
+                    <a href="tel:+905061039894" class="group bg-[#1A1F36] rounded-xl p-6 border border-white/10 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="size-14 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                                <span class="material-symbols-outlined text-primary text-3xl">phone</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-lg font-semibold text-white mb-1 group-hover:text-primary transition-colors">Phone</h3>
+                                <p class="text-sm text-gray-400">+90 506 103 98 94</p>
+                            </div>
+                            <span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">arrow_forward</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 border-t border-white/10 mt-auto bg-background-dark">
+        <div class="flex justify-center items-center gap-4 text-gray-500 dark:text-gray-400">
+            <span class="text-sm">© 2026 Alperen Aydın. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
