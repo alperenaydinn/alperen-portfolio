@@ -38,6 +38,16 @@
             scroll-behavior: smooth;
         }
         
+        /* Prevent horizontal overflow */
+        body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
             width: 8px;
@@ -69,7 +79,7 @@
 <body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen relative selection:bg-primary/30 selection:text-primary">
     <!-- Sticky Navigation Bar -->
     <nav class="fixed top-0 left-0 right-0 z-50 h-[70px] w-full border-b border-white/5 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md transition-all duration-300">
-        <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-6 lg:px-10">
+        <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-10">
             <!-- Logo Area -->
             <a class="group flex items-center gap-2 outline-none" href="#home">
                 <div class="relative flex size-10 items-center justify-center rounded-lg bg-surface-dark/50 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-primary/10 group-hover:ring-primary/50">
@@ -120,25 +130,61 @@
             </div>
             <!-- Mobile Menu Toggle (Visible on smaller screens) -->
             <button id="mobile-menu-btn" class="flex size-10 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 md:hidden">
-                <span class="material-symbols-outlined">menu</span>
+                <span id="menu-icon" class="material-symbols-outlined">menu</span>
             </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-[70px] left-0 right-0 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-white/5">
+            <ul class="flex flex-col px-6 py-4 gap-2">
+                <li>
+                    <a class="nav-link-mobile block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#home" data-section="home">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link-mobile block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#experience" data-section="experience">
+                        Experience
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link-mobile block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#apps" data-section="apps">
+                        Apps
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link-mobile block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#education" data-section="education">
+                        Education
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link-mobile block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-white/5 hover:text-primary dark:hover:text-primary" href="#technologies" data-section="technologies">
+                        Technologies
+                    </a>
+                </li>
+                <li class="pt-2 border-t border-gray-200 dark:border-white/10">
+                    <a class="group flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-background-dark transition-all hover:bg-primary/90 hover:shadow-[0_0_15px_rgba(0,217,255,0.4)] active:scale-95" href="#contact">
+                        <span>Contact</span>
+                        <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
     <!-- Main Content -->
     <main class="relative z-0 flex flex-col items-center pt-[70px]">
         <!-- Hero Section -->
-        <section class="relative flex h-[80vh] w-full flex-col items-center justify-center overflow-hidden px-6 text-center" id="home">
+        <section class="relative flex min-h-[80vh] sm:h-[80vh] w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6 text-center" id="home">
             <!-- Background gradient/pattern -->
             <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a383f] via-background-dark to-background-dark"></div>
             <div class="absolute inset-0 -z-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
             
             <!-- Hero Content -->
-            <div class="relative z-10 flex max-w-3xl flex-col items-center gap-6">
+            <div class="relative z-10 flex max-w-3xl flex-col items-center gap-4 sm:gap-6 px-4">
                 <!-- Profile Image -->
-                <div class="relative group mb-4">
+                <div class="relative group mb-2 sm:mb-4">
                     <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                    <div class="relative aspect-square w-48 h-48 sm:w-52 sm:h-52 rounded-full border-4 border-[#232946] overflow-hidden bg-surface-dark shadow-2xl">
+                    <div class="relative aspect-square w-40 h-40 sm:w-48 sm:h-48 md:w-52 md:h-52 rounded-full border-4 border-[#232946] overflow-hidden bg-surface-dark shadow-2xl">
                         <img alt="Professional headshot of Alperen Aydın" class="w-full h-full object-cover" src="photos/foto.jpg"/>
                     </div>
                 </div>
@@ -149,14 +195,14 @@
                     </span>
                     Available for hire
                 </div>
-                <h1 class="bg-gradient-to-br from-white via-white to-gray-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-7xl">
+                <h1 class="bg-gradient-to-br from-white via-white to-gray-400 bg-clip-text text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-transparent text-center px-4">
                     Building the future<br/>one line at a time.
                 </h1>
-                <p class="max-w-2xl text-lg text-gray-400">
+                <p class="max-w-2xl text-base sm:text-lg text-gray-400 text-center px-4">
                     I'm Alperen, a software engineer specializing in building exceptional digital experiences. Currently, I'm focused on creating accessible, human-centered products.
                 </p>
-                <div class="mt-4 flex gap-4">
-                    <a href="#experience" class="rounded-lg bg-white/5 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/10 transition hover:bg-white/10">
+                <div class="mt-2 sm:mt-4 flex gap-4">
+                    <a href="#experience" class="rounded-lg bg-white/5 px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white ring-1 ring-white/10 transition hover:bg-white/10">
                         View Experience
                     </a>
                 </div>
@@ -164,93 +210,93 @@
         </section>
 
         <!-- Experience Section -->
-        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-4 sm:px-10 py-16" id="experience">
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-4 sm:px-6 md:px-10 py-16" id="experience">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex flex-col items-center justify-center mb-24">
-                    <h1 class="text-4xl md:text-5xl font-bold text-center text-white mb-6">
+                <div class="flex flex-col items-center justify-center mb-12 md:mb-24">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-6 px-4">
                         Professional Experience
                     </h1>
                     <div class="w-[60px] h-[4px] bg-primary rounded-full shadow-[0_0_10px_rgba(0,217,255,0.5)]"></div>
                 </div>
-                <div class="relative max-w-5xl mx-auto">
+                <div class="relative max-w-5xl mx-auto px-4 md:px-0">
                     <!-- Timeline Line -->
-                    <div class="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-primary/20 rounded-full">
+                    <div class="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-primary/20 rounded-full">
                         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary via-primary/50 to-transparent opacity-30"></div>
                     </div>
                     
                     <!-- Experience Entry 1: Integration Engineer @ Ericsson -->
-                    <div class="relative flex justify-center items-center w-full mb-20 group">
-                        <div class="w-1/2 pr-12 flex justify-end">
-                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-green-500 hover:shadow-[0_8px_30px_rgba(34,197,94,0.15)] transition-shadow duration-300">
-                                <div class="absolute top-1/2 -right-12 w-12 h-[2px] bg-green-500/50 hidden md:block"></div>
-                                <div class="flex items-start gap-4 mb-6">
-                                    <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
-                                        <span class="material-symbols-outlined text-white text-3xl">business</span>
+                    <div class="relative flex flex-col md:flex-row justify-center items-center w-full mb-20 group">
+                        <div class="w-full md:w-1/2 md:pr-12 flex justify-start md:justify-end mb-4 md:mb-0">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-6 md:p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-green-500 hover:shadow-[0_8px_30px_rgba(34,197,94,0.15)] transition-shadow duration-300 ml-8 md:ml-0">
+                                <div class="absolute top-1/2 -right-8 md:-right-12 w-8 md:w-12 h-[2px] bg-green-500/50"></div>
+                                <div class="flex items-start gap-3 md:gap-4 mb-6">
+                                    <div class="size-[50px] md:size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
+                                        <span class="material-symbols-outlined text-white text-2xl md:text-3xl">business</span>
                                     </div>
                                     <div>
-                                        <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">Integration Engineer</h3>
-                                        <p class="text-lg font-medium text-green-400 mt-1">Ericsson</p>
+                                        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white leading-tight">Integration Engineer</h3>
+                                        <p class="text-base md:text-lg font-medium text-green-400 mt-1">Ericsson</p>
                                     </div>
                                 </div>
-                                <div class="flex flex-wrap gap-4 mb-6 text-sm text-gray-300 font-medium uppercase tracking-wider">
+                                <div class="flex flex-wrap gap-3 md:gap-4 mb-6 text-xs sm:text-sm text-gray-300 font-medium uppercase tracking-wider">
                                     <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-[18px] text-primary">calendar_month</span>
+                                        <span class="material-symbols-outlined text-[16px] md:text-[18px] text-primary">calendar_month</span>
                                         <span>Sep 2024 - Dec 2025</span>
                                     </div>
                                     <div class="flex items-center gap-1">
-                                        <span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+                                        <span class="material-symbols-outlined text-[16px] md:text-[18px] text-primary">location_on</span>
                                         <span>Ankara, TR</span>
                                     </div>
                                 </div>
                                 <ul class="space-y-3 mb-6 list-none">
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-green-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Designed and developed Python-based automation solutions to support 2G Rehoming processes in live telecom networks.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-green-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Automated complex integration workflows, significantly reducing manual configuration effort during network migrations.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-green-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Integrated scripts with Ericsson Network Manager (ENM) to retrieve network data and execute rehoming operations programmatically.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-green-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Built tools that process structured inputs (such as CSV files) and generate validated configuration outputs for operational use.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-green-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-green-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Actively collaborated with network engineers to align automation solutions with real-world operational requirements.</span>
                                     </li>
                                 </ul>
                                 <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">Python</span>
-                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">Network Automation</span>
-                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">Telecom Integration</span>
-                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">ENM</span>
-                                    <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-semibold">CSV Processing</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-[10px] sm:text-xs font-semibold">Python</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-[10px] sm:text-xs font-semibold">Network Automation</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-[10px] sm:text-xs font-semibold">Telecom Integration</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-[10px] sm:text-xs font-semibold">ENM</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-[10px] sm:text-xs font-semibold">CSV Processing</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                        <div class="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 flex items-center justify-center z-10">
                             <div class="relative flex h-[20px] w-[20px]">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-[20px] w-[20px] bg-green-500 border-4 border-[#1A1F36]"></span>
                             </div>
                         </div>
-                        <div class="w-1/2 pl-12 hidden md:block"></div>
+                        <div class="w-full md:w-1/2 md:pl-12 hidden md:block"></div>
                     </div>
 
                     <!-- Experience Entry 2: Software Engineer Intern @ Arçelik -->
-                    <div class="relative flex justify-center items-center w-full mb-20 group">
-                        <div class="w-1/2 pr-12 hidden md:block"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                            <div class="h-[20px] w-[20px] rounded-full bg-primary border-4 border-[#1A1F36] shadow-sm z-10"></div>
+                    <div class="relative flex flex-col md:flex-row justify-center items-center w-full mb-20 group">
+                        <div class="w-full md:w-1/2 md:pr-12 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 flex items-center justify-center z-10">
+                            <div class="h-[20px] w-[20px] rounded-full bg-primary border-4 border-[#1A1F36] shadow-sm"></div>
                         </div>
-                        <div class="w-1/2 pl-12 flex justify-start">
-                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-shadow duration-300">
-                                <div class="absolute top-1/2 -left-12 w-12 h-[2px] bg-primary/30 hidden md:block"></div>
+                        <div class="w-full md:w-1/2 md:pl-12 flex justify-start mb-4 md:mb-0">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-6 md:p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-primary/50 hover:shadow-[0_8px_30px_rgba(0,217,255,0.15)] transition-shadow duration-300 ml-8 md:ml-0">
+                                <div class="absolute top-1/2 -left-8 md:-left-12 w-8 md:w-12 h-[2px] bg-primary/30"></div>
                                 <div class="flex items-start gap-4 mb-6">
                                     <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
                                         <span class="material-symbols-outlined text-white text-3xl">business</span>
@@ -271,38 +317,38 @@
                                     </div>
                                 </div>
                                 <ul class="space-y-3 mb-6 list-none">
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-primary text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Contributed to the development of internal enterprise applications using <strong class="text-white">C#</strong> and <strong class="text-white">.NET</strong>, focusing on maintainable and scalable architecture.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-primary text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Collaborated with cross-functional teams to implement new features and fix production bugs.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-primary text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Worked with SQL databases, writing optimized queries and assisting in data modeling tasks.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-primary text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Gained hands-on experience with corporate software development workflows and version control best practices.</span>
                                     </li>
                                 </ul>
                                 <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">C#</span>
-                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">.NET</span>
-                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">SQL</span>
-                                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">Enterprise Applications</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-semibold">C#</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-semibold">.NET</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-semibold">SQL</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-semibold">Enterprise Applications</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Experience Entry 3: Software Engineer Intern (Backend) @ Ericsson -->
-                    <div class="relative flex justify-center items-center w-full mb-20 group">
-                        <div class="w-1/2 pr-12 flex justify-end">
-                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-purple-500 hover:shadow-[0_8px_30px_rgba(168,85,247,0.15)] transition-shadow duration-300">
-                                <div class="absolute top-1/2 -right-12 w-12 h-[2px] bg-purple-500/30 hidden md:block"></div>
+                    <div class="relative flex flex-col md:flex-row justify-center items-center w-full mb-20 group">
+                        <div class="w-full md:w-1/2 md:pr-12 flex justify-start md:justify-end mb-4 md:mb-0">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-6 md:p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-purple-500 hover:shadow-[0_8px_30px_rgba(168,85,247,0.15)] transition-shadow duration-300 ml-8 md:ml-0">
+                                <div class="absolute top-1/2 -right-8 md:-right-12 w-8 md:w-12 h-[2px] bg-purple-500/30"></div>
                                 <div class="flex items-start gap-4 mb-6">
                                     <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
                                         <span class="material-symbols-outlined text-white text-3xl">business</span>
@@ -323,48 +369,48 @@
                                     </div>
                                 </div>
                                 <ul class="space-y-3 mb-6 list-none">
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-purple-500 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Worked as a backend-focused intern on the <strong class="text-white">KeyFlow</strong> project, contributing to business-critical backend services.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-purple-500 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Developed and maintained backend components using <strong class="text-white">.NET</strong>, following clean code and layered architecture principles.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-purple-500 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Strengthened database skills by working extensively with <strong class="text-white">SQL</strong> and gaining hands-on experience with NoSQL concepts and <strong class="text-white">PostgreSQL</strong>.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-purple-500 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-purple-500 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Collaborated closely with senior backend engineers to analyze requirements, implement features, and debug production issues.</span>
                                     </li>
                                 </ul>
                                 <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">.NET</span>
-                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">C#</span>
-                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">SQL</span>
-                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">PostgreSQL</span>
-                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">NoSQL</span>
-                                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">Backend Development</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] sm:text-xs font-semibold">.NET</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] sm:text-xs font-semibold">C#</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] sm:text-xs font-semibold">SQL</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] sm:text-xs font-semibold">PostgreSQL</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] sm:text-xs font-semibold">NoSQL</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] sm:text-xs font-semibold">Backend Development</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                            <div class="h-[20px] w-[20px] rounded-full bg-purple-500 border-4 border-[#1A1F36] shadow-sm z-10"></div>
+                        <div class="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 flex items-center justify-center z-10">
+                            <div class="h-[20px] w-[20px] rounded-full bg-purple-500 border-4 border-[#1A1F36] shadow-sm"></div>
                         </div>
-                        <div class="w-1/2 pl-12 hidden md:block"></div>
+                        <div class="w-full md:w-1/2 md:pl-12 hidden md:block"></div>
                     </div>
 
                     <!-- Experience Entry 4: Software Engineer Intern @ PTT -->
-                    <div class="relative flex justify-center items-center w-full mb-20 group">
-                        <div class="w-1/2 pr-12 hidden md:block"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                            <div class="h-[20px] w-[20px] rounded-full bg-blue-500 border-4 border-[#1A1F36] shadow-sm z-10"></div>
+                    <div class="relative flex flex-col md:flex-row justify-center items-center w-full mb-20 group">
+                        <div class="w-full md:w-1/2 md:pr-12 hidden md:block"></div>
+                        <div class="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 flex items-center justify-center z-10">
+                            <div class="h-[20px] w-[20px] rounded-full bg-blue-500 border-4 border-[#1A1F36] shadow-sm"></div>
                         </div>
-                        <div class="w-1/2 pl-12 flex justify-start">
-                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-blue-500/50 hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] transition-shadow duration-300">
-                                <div class="absolute top-1/2 -left-12 w-12 h-[2px] bg-blue-500/30 hidden md:block"></div>
+                        <div class="w-full md:w-1/2 md:pl-12 flex justify-start mb-4 md:mb-0">
+                            <div class="relative w-full max-w-[500px] bg-[#1A1F36] p-6 md:p-8 rounded-[16px] shadow-[0_4px_20px_rgba(0,0,0,0.1)] border-2 border-blue-500/50 hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] transition-shadow duration-300 ml-8 md:ml-0">
+                                <div class="absolute top-1/2 -left-8 md:-left-12 w-8 md:w-12 h-[2px] bg-blue-500/30"></div>
                                 <div class="flex items-start gap-4 mb-6">
                                     <div class="size-[60px] shrink-0 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden border border-white/10">
                                         <span class="material-symbols-outlined text-white text-3xl">business</span>
@@ -385,35 +431,35 @@
                                     </div>
                                 </div>
                                 <ul class="space-y-3 mb-6 list-none">
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-blue-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Supported frontend development of internal web applications using <strong class="text-white">React</strong>, focusing on reusable components and clean UI structure.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-blue-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Integrated <strong class="text-white">REST APIs</strong> and improved data flow between frontend and backend services.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-blue-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Assisted in debugging and improving legacy codebases, enhancing overall application stability.</span>
                                     </li>
-                                    <li class="flex items-start gap-3 text-gray-200 leading-relaxed">
-                                        <span class="material-symbols-outlined text-blue-400 text-[20px] mt-0.5 shrink-0">check_circle</span>
+                                    <li class="flex items-start gap-2 md:gap-3 text-gray-200 leading-relaxed text-sm sm:text-base">
+                                        <span class="material-symbols-outlined text-blue-400 text-[18px] md:text-[20px] mt-0.5 shrink-0">check_circle</span>
                                         <span>Worked closely with senior developers to understand large-scale system architecture and development standards.</span>
                                     </li>
                                 </ul>
                                 <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">React</span>
-                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">JavaScript</span>
-                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">REST APIs</span>
-                                    <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">Frontend Development</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-semibold">React</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-semibold">JavaScript</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-semibold">REST APIs</span>
+                                    <span class="px-2.5 sm:px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-semibold">Frontend Development</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Timeline End Point -->
-                    <div class="absolute left-1/2 transform -translate-x-1/2 bottom-0 flex items-center justify-center">
+                    <div class="absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2 bottom-0 flex items-center justify-center">
                         <div class="h-3 w-3 rounded-full bg-gray-500"></div>
                     </div>
                 </div>
@@ -421,7 +467,7 @@
         </section>
 
         <!-- Apps Section -->
-        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-6 py-20" id="apps">
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-4 sm:px-6 py-12 sm:py-20" id="apps">
             <div class="max-w-[1280px] mx-auto w-full">
                 <!-- Section Header -->
                 <div class="flex flex-col mb-12">
@@ -546,7 +592,7 @@
         </section>
 
         <!-- Education Section -->
-        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-background-dark px-6 py-20" id="education">
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-background-dark px-4 sm:px-6 py-12 sm:py-20" id="education">
             <div class="max-w-6xl mx-auto w-full">
                 <h2 class="text-4xl font-bold text-center mb-12 text-white">
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Education</span>
@@ -613,7 +659,7 @@
         </section>
 
         <!-- Technologies Section -->
-        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-6 py-20" id="technologies">
+        <section class="flex min-h-screen w-full items-start justify-center border-t border-white/5 bg-surface-dark/30 px-4 sm:px-6 py-12 sm:py-20" id="technologies">
             <div class="max-w-6xl mx-auto w-full">
                 <h2 class="text-4xl font-bold text-center mb-16 text-white">
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Technologies</span>
@@ -732,7 +778,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="flex min-h-[50vh] w-full items-center justify-center border-t border-white/5 bg-background-dark px-6 pb-20" id="contact">
+        <section class="flex min-h-[50vh] w-full items-center justify-center border-t border-white/5 bg-background-dark px-4 sm:px-6 pb-12 sm:pb-20" id="contact">
             <div class="max-w-4xl mx-auto w-full py-20">
                 <h2 class="text-4xl font-bold mb-12 text-white text-center">
                     Get In <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Touch</span>
